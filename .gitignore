@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+local.properties
+/.gradle/
+/captures/
+/.externalNativeBuild/
+/.cxx/
