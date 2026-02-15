@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 DBF Gateway
 
-## Getting Started
+**DBF Gateway** is a simple system used to take attendance and redirect participants to online sessions. It is designed
+to be a generic tool for any gathering, such as YMHT sessions, MBA sessions, or general satsangs.
 
-First, run the development server:
+## 🛠 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+* **Framework**: Next.js 16 (App Router)
+* **UI Library**: HeroUI
+* **Styling**: Tailwind CSS v4
+* **Language**: TypeScript
+
+<p align="center">
+    <a href="https://www.dadabhagwan.org/">
+        <img src="https://skillicons.dev/icons?i=nextjs,react,tailwindcss,ts" alt="tech stack" />
+    </a>
+</p>
+
+---
+
+## ✨ Key Features
+
+* **Dynamic Setup**: Change the session name, banner, and footer in one config file without touching the code.
+* **Fast Check-in**: Remembers user details for the day so they do not have to re-type their information.
+* **Automatic Data**: Captures the user's city and a unique device ID automatically.
+* **Audio Feedback**: Custom sounds play when switching themes or submitting the form.
+* **Google Sheets Integration**: Sends all attendance data directly to a Google Sheet.
+
+---
+
+## 📂 Quick Setup
+
+### 1. Environment Variables
+
+Create a `.env.local` file in the root directory and add your credentials:
+
+```env
+# Google Apps Script Web App URL
+NEXT_PUBLIC_GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/xyz.../exec
+
+# The destination meeting link (Google Meet, Zoom, etc.)
+NEXT_PUBLIC_MEET_URL=https://meet.google.com/xyz-xyz-xyz
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Update `src/config/site.ts` with your specific text and images.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Assets
 
-## Learn More
+Place your logos and banners in the `public/assets/` folder.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 How it Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Identify**: The app identifies the user's device on page load.
+2. **Submit**: The user enters their name and mobile number.
+3. **Log**: Data is saved to a Google Sheet via a background API call.
+4. **Join**: The user is instantly redirected to the meeting link.
